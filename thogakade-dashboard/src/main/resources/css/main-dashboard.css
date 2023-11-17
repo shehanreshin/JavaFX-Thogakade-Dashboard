@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+
+.pane {
+    -fx-background-color: #F6FAFD;
+    -fx-background-radius: 20 20 20 20;
+    -fx-border-radius: 20 20 20 20;
+}
+
+.nav-item {
+    -fx-font-family: 'Roboto', sans-serif;
+    -fx-font-weight: 700;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+    -fx-padding: 0 0 0 44;
+}
+
+.nav-item-selected {
+    -fx-background-color: #25C0FF;
+    -fx-text-fill: #FFFFFF;
+}
+
+.nav-item-unselected {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #9CA6B0;
+}
