@@ -13,7 +13,14 @@
             <Image url="@../img/Rectangle_17.png" />
          </image>
       </ImageView>
-      <JFXButton alignment="BASELINE_LEFT" layoutY="107.0" prefHeight="34.0" prefWidth="133.0" text="Dashboard">
+      <JFXButton fx:id="btnDashboard" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="107.0" prefHeight="34.0" prefWidth="133.0" text="Dashboard">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@../img/s_dashboard.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <styleClass>
             <String fx:value="nav-item" />
             <String fx:value="nav-item-selected" />
@@ -23,86 +30,100 @@
             <Image url="@../img/logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/s_dashboard.png" />
-         </image>
-      </ImageView>
-      <JFXButton alignment="BASELINE_LEFT" layoutY="141.0" prefHeight="34.0" prefWidth="133.0" text="Customers">
+      <JFXButton fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="141.0" prefHeight="34.0" prefWidth="133.0" text="Customers">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@../img/customers.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <styleClass>
             <String fx:value="nav-item" />
             <String fx:value="nav-item-unselected" />
          </styleClass>
       </JFXButton>
-      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/customers.png" />
-         </image>
-      </ImageView>
-      <JFXButton alignment="BASELINE_LEFT" layoutY="175.0" prefHeight="34.0" prefWidth="133.0" text="Items">
+      <JFXButton fx:id="btnItems" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="175.0" prefHeight="34.0" prefWidth="133.0" text="Items">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@../img/items.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <styleClass>
             <String fx:value="nav-item" />
             <String fx:value="nav-item-unselected" />
          </styleClass>
       </JFXButton>
-      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/items.png" />
-         </image>
-      </ImageView>
-      <JFXButton alignment="BASELINE_LEFT" layoutY="209.0" prefHeight="34.0" prefWidth="133.0" text="Orders">
+      <JFXButton fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="209.0" prefHeight="34.0" prefWidth="133.0" text="Orders">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@../img/orders.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <styleClass>
             <String fx:value="nav-item" />
             <String fx:value="nav-item-unselected" />
          </styleClass>
       </JFXButton>
-      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/orders.png" />
-         </image>
-      </ImageView>
-      <JFXButton alignment="BASELINE_LEFT" layoutY="243.0" prefHeight="34.0" prefWidth="133.0" text="Place Orders">
+      <JFXButton fx:id="btnPlaceOrders" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="243.0" prefHeight="34.0" prefWidth="133.0" text="Place Orders">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@../img/place_orders.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <styleClass>
             <String fx:value="nav-item" />
             <String fx:value="nav-item-unselected" />
          </styleClass>
       </JFXButton>
-      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/place_orders.png" />
-         </image>
-      </ImageView>
-      <JFXButton alignment="BASELINE_LEFT" layoutY="491.0" prefHeight="34.0" prefWidth="133.0" text="Settings">
+      <JFXButton fx:id="btnSettings" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="491.0" prefHeight="34.0" prefWidth="133.0" text="Settings">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@../img/settings.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <styleClass>
             <String fx:value="nav-item" />
             <String fx:value="nav-item-unselected" />
          </styleClass>
       </JFXButton>
-      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="500.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/settings.png" />
-         </image>
-      </ImageView>
-      <JFXButton fx:id="btnMinimize" alignment="BASELINE_LEFT" layoutY="525.0" onAction="#minimize" prefHeight="34.0" prefWidth="133.0" text="Minimize">
+      <JFXButton fx:id="btnMinimize" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="525.0" onAction="#minimize" prefHeight="34.0" prefWidth="133.0" text="Minimize">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="534.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@../img/minimize.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <styleClass>
             <String fx:value="nav-item" />
             <String fx:value="nav-item-unselected" />
          </styleClass>
       </JFXButton>
-      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="534.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../img/minimize.png" />
-         </image>
-      </ImageView>
-      <JFXButton fx:id="btnExit" alignment="BASELINE_LEFT" layoutY="559.0" onAction="#exit" prefHeight="34.0" prefWidth="133.0" text="Exit">
+      <JFXButton fx:id="btnExit" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="559.0" onAction="#exit" prefHeight="34.0" prefWidth="133.0" text="Exit">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true" >
+               <image>
+                  <Image url="@../img/exit.png" />
+               </image>
+            </ImageView>
+         </graphic>
          <styleClass>
             <String fx:value="nav-item" />
             <String fx:value="nav-item-unselected" />
          </styleClass>
       </JFXButton>
-      <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="568.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="610.0" fitWidth="184.0" layoutX="716.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../img/exit.png" />
+            <Image url="@../img/Rectangle_18.png" />
          </image>
       </ImageView>
    </children>

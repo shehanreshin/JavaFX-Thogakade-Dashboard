@@ -14,6 +14,18 @@ public class MainDashboardController implements Initializable {
     private Stage stage;
 
     @FXML
+    private JFXButton btnDashboard;
+    @FXML
+    private JFXButton btnCustomers;
+    @FXML
+    private JFXButton btnItems;
+    @FXML
+    private JFXButton btnOrders;
+    @FXML
+    private JFXButton btnPlaceOrders;
+    @FXML
+    private JFXButton btnSettings;
+    @FXML
     private JFXButton btnExit;
     @FXML
     private JFXButton btnMinimize;
@@ -29,7 +41,7 @@ public class MainDashboardController implements Initializable {
     }
 
     public void minimize(ActionEvent actionEvent) {
-        stage = (Stage) btnExit.getScene().getWindow();
+        stage = (Stage) btnMinimize.getScene().getWindow();
         stage.setIconified(true);
     }
 }

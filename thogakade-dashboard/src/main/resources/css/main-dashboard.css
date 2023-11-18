@@ -11,12 +11,50 @@
     -fx-font-weight: 700;
     -fx-border-radius: 0;
     -fx-background-radius: 0;
-    -fx-padding: 0 0 0 44;
+    -fx-padding: 0 0 0 13;
+}
+
+.nav-item:hover {
+    -fx-background-color: #25C0FF;
+    -fx-text-fill: #FFFFFF;
+    -fx-cursor: hand;
 }
 
 .nav-item-selected {
     -fx-background-color: #25C0FF;
     -fx-text-fill: #FFFFFF;
+}
+
+#btnDashboard:hover {
+    -fx-graphic: url("../img/s_dashboard.png");
+}
+
+#btnCustomers:hover {
+    -fx-graphic: url("../img/s_customers.png");
+}
+
+#btnItems:hover {
+    -fx-graphic: url("../img/s_items.png");
+}
+
+#btnOrders:hover {
+    -fx-graphic: url("../img/s_orders.png");
+}
+
+#btnPlaceOrders:hover {
+    -fx-graphic: url("../img/s_place_orders.png");
+}
+
+#btnSettings:hover {
+    -fx-graphic: url("../img/s_settings.png");
+}
+
+#btnMinimize:hover {
+    -fx-graphic: url("../img/s_minimize.png");
+}
+
+#btnExit:hover {
+    -fx-graphic: url("../img/s_exit.png");
 }
 
 .nav-item-unselected {
