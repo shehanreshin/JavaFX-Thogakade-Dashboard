@@ -17,6 +17,9 @@ import java.util.ResourceBundle;
 
 public class CustomersDashboardController implements Initializable {
 
+    private double x;
+    private double y;
+
     private Stage stage;
 
     @FXML
@@ -53,7 +56,19 @@ public class CustomersDashboardController implements Initializable {
 
     public void switchToHomePage() throws IOException {
         stage = (Stage) dashboard.getScene().getWindow();
-        stage.setScene(getScene("../view/MainDashboard.fxml"));
+        Scene scene = getScene("../view/MainDashboard.fxml");
+
+        scene.setOnMousePressed(event -> {
+            x = event.getSceneX();
+            y = event.getSceneY();
+        });
+
+        scene.setOnMouseDragged(event -> {
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        });
+
+        stage.setScene(scene);
     }
 
     private Scene getScene(String url) throws IOException {
