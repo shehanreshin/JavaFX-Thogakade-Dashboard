@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class MainDashboardController implements Initializable {
+public class CustomersDashboardController implements Initializable {
 
     private Stage stage;
 
@@ -51,9 +51,9 @@ public class MainDashboardController implements Initializable {
         ((Stage) dashboard.getScene().getWindow()).setIconified(true);
     }
 
-    public void switchToCustomersPage() throws IOException {
+    public void switchToHomePage() throws IOException {
         stage = (Stage) dashboard.getScene().getWindow();
-        stage.setScene(getScene("../view/CustomersDashboard.fxml"));
+        stage.setScene(getScene("../view/MainDashboard.fxml"));
     }
 
     private Scene getScene(String url) throws IOException {
