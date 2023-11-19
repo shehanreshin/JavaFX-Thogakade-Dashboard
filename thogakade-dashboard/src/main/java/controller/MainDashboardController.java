@@ -71,6 +71,23 @@ public class MainDashboardController implements Initializable {
         stage.setScene(scene);
     }
 
+    public void switchToItemsPage() throws IOException {
+        stage = (Stage) dashboard.getScene().getWindow();
+        Scene scene = getScene("../view/ItemsDashboard.fxml");
+
+        scene.setOnMousePressed(event -> {
+            x = event.getSceneX();
+            y = event.getSceneY();
+        });
+
+        scene.setOnMouseDragged(event -> {
+            stage.setX(event.getScreenX() - x);
+            stage.setY(event.getScreenY() - y);
+        });
+
+        stage.setScene(scene);
+    }
+
     private Scene getScene(String url) throws IOException {
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource(url)));
         scene.setFill(Color.TRANSPARENT);

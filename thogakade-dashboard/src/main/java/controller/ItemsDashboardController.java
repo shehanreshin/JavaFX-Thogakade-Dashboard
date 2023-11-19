@@ -1,11 +1,10 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-import dto.Customer;
 import dto.tm.CustomerTm;
+import dto.tm.ItemTm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,14 +16,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
 
-public class CustomersDashboardController implements Initializable {
+public class ItemsDashboardController implements Initializable {
 
     private double x;
     private double y;
@@ -34,15 +32,15 @@ public class CustomersDashboardController implements Initializable {
     @FXML
     private AnchorPane dashboard;
     @FXML
-    private TableView tblCustomers;
+    private TableView tblItems;
     @FXML
-    private TableColumn colId;
+    private TableColumn colCode;
     @FXML
-    private TableColumn colName;
+    private TableColumn colDescription;
     @FXML
-    private TableColumn colAddress;
+    private TableColumn colUnitPrice;
     @FXML
-    private TableColumn colSalary;
+    private TableColumn colQtyOnHand;
     @FXML
     private TableColumn colOption;
     @FXML
@@ -64,10 +62,10 @@ public class CustomersDashboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        colId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
+        colCode.setCellValueFactory(new PropertyValueFactory<>("code"));
+        colDescription.setCellValueFactory(new PropertyValueFactory<>("description"));
+        colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
+        colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("button"));
         loadCustomerTable();
     }
@@ -75,7 +73,7 @@ public class CustomersDashboardController implements Initializable {
     private void loadCustomerTable() {
         ObservableList<Object> tmList = FXCollections.observableArrayList();
 
-        String sql = "select * from thogakade.customer";
+        String sql = "select * from thogakade.item";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/thogakade", "root", "thisisnotasecurepassword");
@@ -83,19 +81,19 @@ public class CustomersDashboardController implements Initializable {
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
-                CustomerTm customerTm = new CustomerTm();
-                customerTm.setId(resultSet.getString(1));
-                customerTm.setName(resultSet.getString(2));
-                customerTm.setAddress(resultSet.getString(3));
-                customerTm.setSalary(resultSet.getDouble(4));
-                customerTm.setButton(new Button("Delete"));
-                tmList.add(customerTm);
+                ItemTm itemTm = new ItemTm();
+                itemTm.setCode(resultSet.getString(1));
+                itemTm.setDescription(resultSet.getString(2));
+                itemTm.setUnitPrice(resultSet.getDouble(3));
+                itemTm.setQtyOnHand(resultSet.getInt(4));
+                itemTm.setButton(new Button("Delete"));
+                tmList.add(itemTm);
             }
 
             statement.close();
             connection.close();
 
-            tblCustomers.setItems(tmList);
+            tblItems.setItems(tmList);
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
         }
@@ -126,9 +124,9 @@ public class CustomersDashboardController implements Initializable {
         stage.setScene(scene);
     }
 
-    public void switchToItemsPage() throws IOException {
+    public void switchToCustomersPage() throws IOException {
         stage = (Stage) dashboard.getScene().getWindow();
-        Scene scene = getScene("../view/ItemsDashboard.fxml");
+        Scene scene = getScene("../view/CustomersDashboard.fxml");
 
         scene.setOnMousePressed(event -> {
             x = event.getSceneX();

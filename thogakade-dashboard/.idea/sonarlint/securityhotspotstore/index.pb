@@ -11,3 +11,9 @@ O
 src/main/java/dto/Customer.java,1\c\1cf9819cf3861ca88a88823a7857d17e2ee120a7
 T
 $src/main/java/dto/tm/CustomerTm.java,2\a\2a0edce3160840b5e1dff3a221d2fba22c0b3f67
+f
+6src/main/java/controller/ItemsDashboardController.java,4\f\4f5d2688c8b124e771d1542e1338c55f99e32d4d
+K
+src/main/java/dto/Item.java,8\d\8dde2cd47f46467a255d833a51692c7f470a6401
+P
+ src/main/java/dto/tm/ItemTm.java,9\b\9bcbd3a396619ca96463cd87f096ec09b0b2ae8f

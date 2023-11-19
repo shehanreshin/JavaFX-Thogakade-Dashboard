@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -43,7 +44,7 @@
             <String fx:value="nav-item-unselected" />
          </styleClass>
       </JFXButton>
-      <JFXButton fx:id="btnItems" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="175.0" prefHeight="34.0" prefWidth="133.0" text="Items">
+      <JFXButton fx:id="btnItems" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="175.0" onAction="#switchToItemsPage" prefHeight="34.0" prefWidth="133.0" text="Items">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -126,5 +127,6 @@
             <Image url="@../img/Rectangle_18.png" />
          </image>
       </ImageView>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="752.0" layoutY="68.0" prefHeight="42.0" prefWidth="111.0" text="HH:MM:SS" textAlignment="CENTER" />
    </children>
 </AnchorPane>

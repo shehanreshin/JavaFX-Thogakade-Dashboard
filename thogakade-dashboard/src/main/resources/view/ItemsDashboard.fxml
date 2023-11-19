@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="dashboard" prefHeight="610.0" prefWidth="900.0" styleClass="pane" stylesheets="@../css/customers-dashboard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomersDashboardController">
+<AnchorPane fx:id="dashboard" prefHeight="610.0" prefWidth="900.0" styleClass="pane" stylesheets="@../css/items-dashboard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ItemsDashboardController">
    <children>
       <ImageView fitHeight="610.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -32,30 +32,30 @@
             <Image url="@../img/logo.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="141.0" prefHeight="34.0" prefWidth="133.0" text="Customers">
+      <JFXButton fx:id="btnCustomers" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="141.0" onAction="#switchToCustomersPage" prefHeight="34.0" prefWidth="133.0" text="Customers">
          <graphic>
             <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../img/s_customers.png" />
-               </image>
-            </ImageView>
-         </graphic>
-         <styleClass>
-            <String fx:value="nav-item" />
-            <String fx:value="nav-item-selected" />
-         </styleClass>
-      </JFXButton>
-      <JFXButton fx:id="btnItems" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="175.0" onAction="#switchToItemsPage" prefHeight="34.0" prefWidth="133.0" text="Items">
-         <graphic>
-            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../img/items.png" />
+                  <Image url="@../img/customers.png" />
                </image>
             </ImageView>
          </graphic>
          <styleClass>
             <String fx:value="nav-item" />
             <String fx:value="nav-item-unselected" />
+         </styleClass>
+      </JFXButton>
+      <JFXButton fx:id="btnItems" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="175.0" prefHeight="34.0" prefWidth="133.0" text="Items">
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0" layoutX="13.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/s_items.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <styleClass>
+            <String fx:value="nav-item" />
+            <String fx:value="nav-item-selected" />
          </styleClass>
       </JFXButton>
       <JFXButton fx:id="btnOrders" alignment="BASELINE_LEFT" graphicTextGap="15.0" layoutY="209.0" prefHeight="34.0" prefWidth="133.0" text="Orders">
@@ -128,12 +128,12 @@
             <Image url="@../img/Rectangle_18.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tblCustomers" layoutX="155.0" layoutY="46.0" maxHeight="525.0" maxWidth="540.0" minHeight="525.0" minWidth="540.0" prefHeight="525.0" prefWidth="540.0">
+      <TableView fx:id="tblItems" layoutX="155.0" layoutY="46.0" maxHeight="525.0" maxWidth="540.0" minHeight="525.0" minWidth="540.0" prefHeight="525.0" prefWidth="540.0">
         <columns>
-          <TableColumn fx:id="colId" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="ID" />
-          <TableColumn fx:id="colName" maxWidth="116.0" minWidth="116.0" prefWidth="116.0" resizable="false" text="Name" />
-            <TableColumn fx:id="colAddress" maxWidth="108.0" minWidth="108.0" prefWidth="108.0" resizable="false" text="Address" />
-            <TableColumn fx:id="colSalary" maxWidth="108.0" minWidth="108.0" prefWidth="108.0" resizable="false" text="Salary" />
+          <TableColumn fx:id="colCode" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Code" />
+          <TableColumn fx:id="colDescription" maxWidth="124.0" minWidth="124.0" prefWidth="124.0" resizable="false" text="Description" />
+            <TableColumn fx:id="colUnitPrice" maxWidth="108.0" minWidth="108.0" prefWidth="108.0" resizable="false" text="Unit Price" />
+            <TableColumn fx:id="colQtyOnHand" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="Qty On Hand" />
             <TableColumn fx:id="colOption" maxWidth="108.0" minWidth="108.0" prefWidth="108.0" resizable="false" text="Option" />
         </columns>
       </TableView>
