@@ -7,3 +7,7 @@ j
 :src/main/java/controller/CustomersDashboardController.java,4\7\47b95731bb5af013d16716a48d5ba80847f58463
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+O
+src/main/java/dto/Customer.java,1\c\1cf9819cf3861ca88a88823a7857d17e2ee120a7
+T
+$src/main/java/dto/tm/CustomerTm.java,2\a\2a0edce3160840b5e1dff3a221d2fba22c0b3f67

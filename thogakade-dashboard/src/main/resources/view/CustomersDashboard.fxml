@@ -2,6 +2,8 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import java.lang.String?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -126,5 +128,14 @@
             <Image url="@../img/Rectangle_18.png" />
          </image>
       </ImageView>
+      <TableView fx:id="tblCustomers" layoutX="155.0" layoutY="46.0" maxHeight="525.0" maxWidth="540.0" minHeight="525.0" minWidth="540.0" prefHeight="525.0" prefWidth="540.0">
+        <columns>
+          <TableColumn fx:id="colId" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="ID" />
+          <TableColumn fx:id="colName" maxWidth="116.0" minWidth="116.0" prefWidth="116.0" resizable="false" text="Name" />
+            <TableColumn fx:id="colAddress" maxWidth="108.0" minWidth="108.0" prefWidth="108.0" resizable="false" text="Address" />
+            <TableColumn fx:id="colSalary" maxWidth="108.0" minWidth="108.0" prefWidth="108.0" resizable="false" text="Salary" />
+            <TableColumn fx:id="colOption" maxWidth="108.0" minWidth="108.0" prefWidth="108.0" resizable="false" text="Option" />
+        </columns>
+      </TableView>
    </children>
 </AnchorPane>
