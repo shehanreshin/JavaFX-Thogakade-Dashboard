@@ -86,3 +86,7 @@
     -fx-background-color: #25C0FF;
 }
 
+#colOption .table-cell {
+    -fx-padding: 0 0 40 0;
+}
+

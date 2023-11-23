@@ -1,11 +1,11 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-import dto.Customer;
+import db.DBConnection;
+import dto.CustomerDTO;
 import dto.tm.CustomerTm;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -17,17 +17,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import model.CustomerModel;
+import model.impl.CustomerModelImpl;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class CustomersDashboardController implements Initializable {
 
     private double x;
     private double y;
+    private final CustomerModel customerModel = new CustomerModelImpl();
 
     private Stage stage;
 
@@ -74,27 +77,17 @@ public class CustomersDashboardController implements Initializable {
 
     private void loadCustomerTable() {
         ObservableList<Object> tmList = FXCollections.observableArrayList();
-
-        String sql = "select * from thogakade.customer";
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/thogakade", "root", "thisisnotasecurepassword");
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
-
-            while (resultSet.next()) {
+            List<CustomerDTO> customerDTOS = customerModel.getAllCustomers();
+            for (CustomerDTO customerDTO : customerDTOS) {
                 CustomerTm customerTm = new CustomerTm();
-                customerTm.setId(resultSet.getString(1));
-                customerTm.setName(resultSet.getString(2));
-                customerTm.setAddress(resultSet.getString(3));
-                customerTm.setSalary(resultSet.getDouble(4));
+                customerTm.setId(customerDTO.getId());
+                customerTm.setName(customerDTO.getName());
+                customerTm.setAddress(customerDTO.getAddress());
+                customerTm.setSalary(customerDTO.getSalary());
                 customerTm.setButton(new Button("Delete"));
                 tmList.add(customerTm);
             }
-
-            statement.close();
-            connection.close();
-
             tblCustomers.setItems(tmList);
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);

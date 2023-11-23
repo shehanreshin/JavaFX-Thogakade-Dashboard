@@ -7,8 +7,6 @@ j
 :src/main/java/controller/CustomersDashboardController.java,4\7\47b95731bb5af013d16716a48d5ba80847f58463
 7
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
-O
-src/main/java/dto/Customer.java,1\c\1cf9819cf3861ca88a88823a7857d17e2ee120a7
 T
 $src/main/java/dto/tm/CustomerTm.java,2\a\2a0edce3160840b5e1dff3a221d2fba22c0b3f67
 f
@@ -17,3 +15,9 @@ K
 src/main/java/dto/Item.java,8\d\8dde2cd47f46467a255d833a51692c7f470a6401
 P
  src/main/java/dto/tm/ItemTm.java,9\b\9bcbd3a396619ca96463cd87f096ec09b0b2ae8f
+R
+"src/main/java/db/DBConnection.java,f\d\fd7336f68247f5ace91042607378ff616e4285dd
+V
+&src/main/java/model/CustomerModel.java,9\0\90d33e6b69ababcf056909df939400fe4453c982
+_
+/src/main/java/model/impl/CustomerModelImpl.java,0\b\0be0bbe10c6e48eb8c96dc0e7ed2f0d10bff1b49

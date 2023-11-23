@@ -1,22 +1,16 @@
 
-g	java:S112d"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ÁÊí¯¾1
+g	java:S112]"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¾Ã†×¾1
 Q
-java:S3740%"/Provide the parametrized type for this generic.(ÕÄ¯Ÿúÿÿÿÿ8ÁÊí¯¾1
+java:S3740("/Provide the parametrized type for this generic.(ÕÄ¯Ÿúÿÿÿÿ8¿Ã†×¾1
 Q
-java:S3740'"/Provide the parametrized type for this generic.(ºšãÿıÿÿÿÿ8ÁÊí¯¾1
+java:S3740*"/Provide the parametrized type for this generic.(ºšãÿıÿÿÿÿ8¿Ã†×¾1
 L
-java:S3740)"/Provide the parametrized type for this generic.(Œà•®8ÁÊí¯¾1
+java:S3740,"/Provide the parametrized type for this generic.(Œà•®8ÀÃ†×¾1
 L
-java:S3740+"/Provide the parametrized type for this generic.(´°æ¸8ÁÊí¯¾1
+java:S3740."/Provide the parametrized type for this generic.(´°æ¸8ÀÃ†×¾1
 Q
-java:S3740-"/Provide the parametrized type for this generic.(ù‚©·üÿÿÿÿ8ÁÊí¯¾1
+java:S37400"/Provide the parametrized type for this generic.(ù‚©·üÿÿÿÿ8ÀÃ†×¾1
 L
-java:S3740/"/Provide the parametrized type for this generic.(ÚÊØ˜8ÁÊí¯¾1
-S
-java:S6437Q"6Revoke and change this password, as it is compromised.(ÉÑ¸ô8”Ëí¯¾1
-F
-java:S1128")Remove this unused import 'dto.Customer'.(Ç¤Õ¡8›™ğ¯¾1
-W
-java:S1128"5Remove this unused import 'javafx.event.ActionEvent'.(î•¯¼ıÿÿÿÿ8›™ğ¯¾1
-P
-java:S1128"4Remove this unused import 'javafx.stage.StageStyle'.(¶©28œ™ğ¯¾1
+java:S37402"/Provide the parametrized type for this generic.(ÚÊØ˜8ÀÃ†×¾1
+I
+java:S1128",Remove this unused import 'db.DBConnection'.(Šùà†8ØÂ‰×¾1

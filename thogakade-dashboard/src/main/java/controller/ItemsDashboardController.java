@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import db.DBConnection;
 import dto.tm.CustomerTm;
 import dto.tm.ItemTm;
 import javafx.collections.FXCollections;
@@ -75,9 +76,7 @@ public class ItemsDashboardController implements Initializable {
 
         String sql = "select * from thogakade.item";
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/thogakade", "root", "thisisnotasecurepassword");
-            Statement statement = connection.createStatement();
+            Statement statement = DBConnection.getInstance().getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery(sql);
 
             while (resultSet.next()) {
@@ -91,8 +90,6 @@ public class ItemsDashboardController implements Initializable {
             }
 
             statement.close();
-            connection.close();
-
             tblItems.setItems(tmList);
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);

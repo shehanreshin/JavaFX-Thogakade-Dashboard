@@ -86,3 +86,6 @@
     -fx-background-color: #25C0FF;
 }
 
+.button {
+    -fx-cursor: hand;
+}
