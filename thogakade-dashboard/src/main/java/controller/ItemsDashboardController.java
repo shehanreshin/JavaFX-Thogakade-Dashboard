@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import db.DBConnection;
 import dto.tm.CustomerTm;
 import dto.tm.ItemTm;
@@ -60,6 +61,21 @@ public class ItemsDashboardController implements Initializable {
     private JFXButton btnExit;
     @FXML
     private JFXButton btnMinimize;
+    @FXML
+    private JFXButton btnUpdate;
+    @FXML
+    private JFXButton btnSave;
+    @FXML
+    private JFXButton btnReload;
+
+    @FXML
+    private JFXTextField txtCode;
+    @FXML
+    private JFXTextField txtDescription;
+    @FXML
+    private JFXTextField txtUnitPrice;
+    @FXML
+    private JFXTextField txtQtyOnHand;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -143,4 +159,18 @@ public class ItemsDashboardController implements Initializable {
         scene.setFill(Color.TRANSPARENT);
         return scene;
     }
+
+    public void updateItem() {
+
+    }
+
+    public void saveItem() {
+
+    }
+
+    public void reloadItemTable() {
+
+    }
+
+
 }
