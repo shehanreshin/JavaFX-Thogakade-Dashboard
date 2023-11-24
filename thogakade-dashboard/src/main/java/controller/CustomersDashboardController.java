@@ -1,6 +1,7 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import db.DBConnection;
 import dto.CustomerDTO;
 import dto.tm.CustomerTm;
@@ -10,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -37,7 +39,7 @@ public class CustomersDashboardController implements Initializable {
     @FXML
     private AnchorPane dashboard;
     @FXML
-    private TableView tblCustomers;
+    private TableView<CustomerTm> tblCustomers;
     @FXML
     private TableColumn colId;
     @FXML
@@ -64,6 +66,21 @@ public class CustomersDashboardController implements Initializable {
     private JFXButton btnExit;
     @FXML
     private JFXButton btnMinimize;
+    @FXML
+    private JFXButton btnUpdate;
+    @FXML
+    private JFXButton btnSave;
+    @FXML
+    private JFXButton btnReload;
+
+    @FXML
+    private JFXTextField txtId;
+    @FXML
+    private JFXTextField txtName;
+    @FXML
+    private JFXTextField txtAddress;
+    @FXML
+    private JFXTextField txtSalary;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -73,10 +90,14 @@ public class CustomersDashboardController implements Initializable {
         colSalary.setCellValueFactory(new PropertyValueFactory<>("salary"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("button"));
         loadCustomerTable();
+
+        tblCustomers.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            setData(newValue);
+        });
     }
 
     private void loadCustomerTable() {
-        ObservableList<Object> tmList = FXCollections.observableArrayList();
+        ObservableList<CustomerTm> tmList = FXCollections.observableArrayList();
         try {
             List<CustomerDTO> customerDTOS = customerModel.getAllCustomers();
             for (CustomerDTO customerDTO : customerDTOS) {
@@ -85,7 +106,13 @@ public class CustomersDashboardController implements Initializable {
                 customerTm.setName(customerDTO.getName());
                 customerTm.setAddress(customerDTO.getAddress());
                 customerTm.setSalary(customerDTO.getSalary());
-                customerTm.setButton(new Button("Delete"));
+
+                Button btn = new Button("Delete");
+                btn.setOnAction(actionEvent -> {
+                    deleteCustomer(customerTm.getId());
+                });
+                customerTm.setButton(btn);
+
                 tmList.add(customerTm);
             }
             tblCustomers.setItems(tmList);
@@ -141,4 +168,79 @@ public class CustomersDashboardController implements Initializable {
         scene.setFill(Color.TRANSPARENT);
         return scene;
     }
+
+    public void reloadCustomerTable() {
+        loadCustomerTable();
+    }
+
+    public void updateCustomer() {
+        try {
+            boolean isUpdated = customerModel.updateCustomer(new CustomerDTO(txtId.getText(),
+                    txtName.getText(),
+                    txtAddress.getText(),
+                    Double.parseDouble(txtSalary.getText())
+            ));
+            if (isUpdated) {
+                new Alert(Alert.AlertType.INFORMATION, "Customer Updated!").show();
+                loadCustomerTable();
+                clearFields();
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void clearFields() {
+        tblCustomers.refresh();
+        txtSalary.clear();
+        txtAddress.clear();
+        txtName.clear();
+        txtId.clear();
+        txtId.setEditable(true);
+    }
+
+    public void saveCustomer() {
+        try {
+            boolean isSaved = customerModel.createCustomer(new CustomerDTO(txtId.getText(),
+                    txtName.getText(),
+                    txtAddress.getText(),
+                    Double.parseDouble(txtSalary.getText())
+            ));
+            if (isSaved) {
+                new Alert(Alert.AlertType.INFORMATION, "Customer Saved!").show();
+                loadCustomerTable();
+                clearFields();
+            }
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            new Alert(Alert.AlertType.ERROR, "Duplicate Entry").show();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteCustomer(String id) {
+        try {
+            boolean isDeleted = customerModel.deleteCustomer(id);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.INFORMATION, "Customer Deleted!").show();
+                loadCustomerTable();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setData(CustomerTm newValue) {
+        if (newValue != null) {
+            txtId.setEditable(false);
+            txtId.setText(newValue.getId());
+            txtName.setText(newValue.getName());
+            txtAddress.setText(newValue.getAddress());
+            txtSalary.setText(String.valueOf(newValue.getSalary()));
+        }
+    }
 }
+
+

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<?import javafx.scene.control.Label?>
 <AnchorPane fx:id="dashboard" prefHeight="610.0" prefWidth="900.0" styleClass="pane" stylesheets="@../css/customers-dashboard.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CustomersDashboardController">
    <children>
       <ImageView fitHeight="610.0" fitWidth="133.0" pickOnBounds="true" preserveRatio="true">
@@ -156,7 +157,7 @@
             <String fx:value="profile-name" />
          </styleClass>
       </Label>
-      <TableView fx:id="tblCustomers" layoutX="155.0" layoutY="46.0" maxHeight="525.0" maxWidth="540.0" minHeight="525.0" minWidth="540.0" prefHeight="525.0" prefWidth="540.0">
+      <TableView fx:id="tblCustomers" layoutX="155.0" layoutY="130.0" maxHeight="420.0" maxWidth="540.0" minHeight="420.0" minWidth="540.0" prefHeight="420.0" prefWidth="540.0">
         <columns>
           <TableColumn fx:id="colId" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="ID" />
           <TableColumn fx:id="colName" maxWidth="116.0" minWidth="116.0" prefWidth="116.0" resizable="false" text="Name" />
@@ -165,5 +166,12 @@
             <TableColumn fx:id="colOption" maxWidth="108.0" minWidth="108.0" prefWidth="108.0" resizable="false" text="Option" />
         </columns>
       </TableView>
+      <JFXTextField fx:id="txtId" focusColor="#405aa800" layoutX="155.0" layoutY="33.0" prefHeight="30.0" prefWidth="133.0" promptText="ID" styleClass="txt-field" unFocusColor="#4d4d4d00" />
+      <JFXTextField fx:id="txtName" focusColor="#405aa800" layoutX="299.0" layoutY="33.0" prefHeight="30.0" prefWidth="162.0" promptText="Name" styleClass="txt-field" unFocusColor="#4d4d4d00" />
+      <JFXTextField fx:id="txtAddress" focusColor="#405aa800" layoutX="473.0" layoutY="33.0" prefHeight="30.0" prefWidth="220.0" promptText="Address" styleClass="txt-field" unFocusColor="#4d4d4d00" />
+      <JFXTextField fx:id="txtSalary" focusColor="#405aa800" layoutX="155.0" layoutY="78.0" prefHeight="30.0" prefWidth="169.0" promptText="Salary" styleClass="txt-field" unFocusColor="#4d4d4d00" />
+      <JFXButton fx:id="btnUpdate" layoutX="338.0" layoutY="78.0" onAction="#updateCustomer" prefHeight="30.0" prefWidth="84.0" styleClass="btn" text="Update" />
+      <JFXButton fx:id="btnSave" layoutX="431.0" layoutY="78.0" onAction="#saveCustomer" prefHeight="30.0" prefWidth="84.0" styleClass="btn" text="Save" />
+      <JFXButton fx:id="btnReload" layoutX="609.0" layoutY="561.0" onAction="#reloadCustomerTable" prefHeight="30.0" prefWidth="84.0" styleClass="btn" text="Reload" />
    </children>
 </AnchorPane>
