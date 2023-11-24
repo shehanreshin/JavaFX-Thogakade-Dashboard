@@ -3,6 +3,8 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import db.DBConnection;
+import dto.CustomerDTO;
+import dto.ItemDTO;
 import dto.tm.CustomerTm;
 import dto.tm.ItemTm;
 import javafx.collections.FXCollections;
@@ -11,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -18,6 +21,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import model.CustomerModel;
+import model.ItemModel;
+import model.impl.CustomerModelImpl;
+import model.impl.ItemModelImpl;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +35,7 @@ public class ItemsDashboardController implements Initializable {
 
     private double x;
     private double y;
+    private final ItemModel itemModel = new ItemModelImpl();
 
     private Stage stage;
 
@@ -165,7 +173,31 @@ public class ItemsDashboardController implements Initializable {
     }
 
     public void saveItem() {
+        try {
+            boolean isSaved = itemModel.createItem(new ItemDTO(txtCode.getText(),
+                    txtDescription.getText(),
+                    Double.parseDouble(txtUnitPrice.getText()),
+                    Integer.parseInt(txtQtyOnHand.getText())
+            ));
+            if (isSaved) {
+                new Alert(Alert.AlertType.INFORMATION, "Item Saved!").show();
+                loadCustomerTable();
+                clearFields();
+            }
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            new Alert(Alert.AlertType.ERROR, "Duplicate Entry").show();
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
+    private void clearFields() {
+        tblItems.refresh();
+        txtCode.clear();
+        txtDescription.clear();
+        txtUnitPrice.clear();
+        txtQtyOnHand.clear();
+        txtCode.setEditable(true);
     }
 
     public void reloadItemTable() {

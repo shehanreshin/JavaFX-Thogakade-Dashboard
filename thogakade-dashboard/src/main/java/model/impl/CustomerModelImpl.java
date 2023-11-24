@@ -61,9 +61,4 @@ public class CustomerModelImpl implements CustomerModel {
 
         return dtoList;
     }
-
-    @Override
-    public CustomerDTO searchCustomer(String id) {
-        return null;
-    }
 }
