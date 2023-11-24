@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;700;900&display=swap');
 
 .pane {
     -fx-background-color: #F6FAFD;
@@ -60,4 +60,46 @@
 .nav-item-unselected {
     -fx-background-color: #FFFFFF;
     -fx-text-fill: #9CA6B0;
+}
+
+.roboto-text {
+    -fx-font-family: 'Roboto', sans-serif;
+    -fx-font-weight: 700;
+}
+
+.profile-header {
+    -fx-font-size: 14;
+    -fx-text-fill: #1C2D58;
+}
+
+.profile-name {
+    -fx-font-size: 14;
+    -fx-text-fill: #FFFFFF;
+}
+
+.profile-role {
+    -fx-font-size: 6;
+    -fx-text-fill: #9CA6B0;
+}
+
+.moderator {
+    -fx-font-size: 6;
+}
+
+.clock-text {
+    -fx-font-family: 'Orbitron', sans-serif;
+    -fx-font-weight: 700;
+    -fx-text-fill: #FFFFFF;
+}
+
+.time {
+    -fx-font-size: 44;
+}
+
+.am-pm {
+    -fx-font-size: 25;
+}
+
+.date {
+    -fx-font-size: 16;
 }

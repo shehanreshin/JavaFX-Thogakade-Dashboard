@@ -127,6 +127,79 @@
             <Image url="@../img/Rectangle_18.png" />
          </image>
       </ImageView>
-      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="752.0" layoutY="68.0" prefHeight="42.0" prefWidth="111.0" text="HH:MM:SS" textAlignment="CENTER" />
+      <Label layoutX="747.0" layoutY="31.0" stylesheets="@../css/main-dashboard.css" text="Profile">
+         <styleClass>
+            <String fx:value="roboto-text" />
+            <String fx:value="profile-header" />
+         </styleClass>
+      </Label>
+      <ImageView fitHeight="14.0" fitWidth="14.0" layoutX="855.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/admin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="122.0" fitWidth="122.0" layoutX="747.0" layoutY="66.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Rectangle_25.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="84.0" fitWidth="84.0" layoutX="766.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/avatar.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="778.0" layoutY="166.0" stylesheets="@../css/main-dashboard.css" text="John Doe">
+         <styleClass>
+            <String fx:value="roboto-text" />
+            <String fx:value="profile-name" />
+         </styleClass>
+      </Label>
+      <ImageView fitHeight="85.0" fitWidth="300.0" layoutX="169.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../img/Rectangle_26.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="187.0" layoutY="70.0" stylesheets="@../css/main-dashboard.css" text="09:20:11">
+         <styleClass>
+            <String fx:value="clock-text" />
+            <String fx:value="time" />
+         </styleClass>
+      </Label>
+      <Label layoutX="187.0" layoutY="119.0" stylesheets="@../css/main-dashboard.css" text="Fri,">
+         <styleClass>
+            <String fx:value="clock-text" />
+            <String fx:value="date" />
+         </styleClass>
+      </Label>
+      <Label layoutX="401.0" layoutY="83.0" stylesheets="@../css/main-dashboard.css" text="AM">
+         <styleClass>
+            <String fx:value="clock-text" />
+            <String fx:value="am-pm" />
+         </styleClass>
+      </Label>
+      <Label layoutX="219.0" layoutY="119.0" stylesheets="@../css/main-dashboard.css" text="17">
+         <styleClass>
+            <String fx:value="clock-text" />
+            <String fx:value="date" />
+         </styleClass>
+      </Label>
+      <Label layoutX="252.0" layoutY="119.0" stylesheets="@../css/main-dashboard.css" text="September">
+         <styleClass>
+            <String fx:value="clock-text" />
+            <String fx:value="date" />
+         </styleClass>
+      </Label>
+      <Label layoutX="395.0" layoutY="119.0" stylesheets="@../css/main-dashboard.css" text="2023">
+         <styleClass>
+            <String fx:value="clock-text" />
+            <String fx:value="date" />
+         </styleClass>
+      </Label>
+      <Label layoutX="169.0" layoutY="30.0" stylesheets="@../css/main-dashboard.css" text="Hello, John">
+         <styleClass>
+            <String fx:value="roboto-text" />
+            <String fx:value="profile-header" />
+         </styleClass>
+      </Label>
    </children>
 </AnchorPane>
