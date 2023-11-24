@@ -27,12 +27,12 @@ public class ItemModelImpl implements ItemModel {
 
     @Override
     public boolean updateItem(ItemDTO itemDTO) throws SQLException, ClassNotFoundException {
-        String sql = "UPDATE item SET code=?, description=?, unitPrice=? WHERE qtyOnHand=?";
+        String sql = "UPDATE item SET description=?, unitPrice=?, qtyOnHand=? WHERE code=?";
         PreparedStatement preparedStatement = DBConnection.getInstance().getConnection().prepareStatement(sql);
-        preparedStatement.setString(1,itemDTO.getCode());
-        preparedStatement.setString(2,itemDTO.getDescription());
-        preparedStatement.setDouble(3,itemDTO.getUnitPrice());
-        preparedStatement.setInt(4,itemDTO.getQtyOnHand());
+        preparedStatement.setString(1,itemDTO.getDescription());
+        preparedStatement.setDouble(2,itemDTO.getUnitPrice());
+        preparedStatement.setInt(3,itemDTO.getQtyOnHand());
+        preparedStatement.setString(4,itemDTO.getCode());
         return preparedStatement.executeUpdate()>0;
     }
 

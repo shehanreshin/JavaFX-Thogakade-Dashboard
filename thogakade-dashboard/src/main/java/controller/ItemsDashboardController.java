@@ -92,10 +92,10 @@ public class ItemsDashboardController implements Initializable {
         colUnitPrice.setCellValueFactory(new PropertyValueFactory<>("unitPrice"));
         colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("button"));
-        loadCustomerTable();
+        loadItemTable();
     }
 
-    private void loadCustomerTable() {
+    private void loadItemTable() {
         ObservableList<Object> tmList = FXCollections.observableArrayList();
 
         String sql = "select * from thogakade.item";
@@ -169,7 +169,20 @@ public class ItemsDashboardController implements Initializable {
     }
 
     public void updateItem() {
-
+        try {
+            boolean isUpdated = itemModel.updateItem(new ItemDTO(txtCode.getText(),
+                    txtDescription.getText(),
+                    Double.parseDouble(txtUnitPrice.getText()),
+                    Integer.parseInt(txtQtyOnHand.getText())
+            ));
+            if (isUpdated) {
+                new Alert(Alert.AlertType.INFORMATION, "Item Updated!").show();
+                loadItemTable();
+                clearFields();
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public void saveItem() {
@@ -181,7 +194,7 @@ public class ItemsDashboardController implements Initializable {
             ));
             if (isSaved) {
                 new Alert(Alert.AlertType.INFORMATION, "Item Saved!").show();
-                loadCustomerTable();
+                loadItemTable();
                 clearFields();
             }
         } catch (SQLIntegrityConstraintViolationException ex) {
@@ -201,8 +214,7 @@ public class ItemsDashboardController implements Initializable {
     }
 
     public void reloadItemTable() {
-
+        loadItemTable();
     }
-
 
 }
