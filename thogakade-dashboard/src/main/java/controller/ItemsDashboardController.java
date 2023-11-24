@@ -29,6 +29,7 @@ import model.impl.ItemModelImpl;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ItemsDashboardController implements Initializable {
@@ -42,7 +43,7 @@ public class ItemsDashboardController implements Initializable {
     @FXML
     private AnchorPane dashboard;
     @FXML
-    private TableView tblItems;
+    private TableView<ItemTm> tblItems;
     @FXML
     private TableColumn colCode;
     @FXML
@@ -93,29 +94,34 @@ public class ItemsDashboardController implements Initializable {
         colQtyOnHand.setCellValueFactory(new PropertyValueFactory<>("qtyOnHand"));
         colOption.setCellValueFactory(new PropertyValueFactory<>("button"));
         loadItemTable();
+
+        tblItems.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            setData(newValue);
+        });
     }
 
     private void loadItemTable() {
-        ObservableList<Object> tmList = FXCollections.observableArrayList();
-
-        String sql = "select * from thogakade.item";
+        ObservableList<ItemTm> tmList = FXCollections.observableArrayList();
         try {
-            Statement statement = DBConnection.getInstance().getConnection().createStatement();
-            ResultSet resultSet = statement.executeQuery(sql);
+            List<ItemDTO> dtoList  = itemModel.getAllItems();
+            for (ItemDTO itemDTO : dtoList) {
+                Button btn = new Button("Delete");
+                ItemTm itemTm = new ItemTm(
+                        itemDTO.getCode(),
+                        itemDTO.getDescription(),
+                        itemDTO.getUnitPrice(),
+                        itemDTO.getQtyOnHand(),
+                        btn
+                );
 
-            while (resultSet.next()) {
-                ItemTm itemTm = new ItemTm();
-                itemTm.setCode(resultSet.getString(1));
-                itemTm.setDescription(resultSet.getString(2));
-                itemTm.setUnitPrice(resultSet.getDouble(3));
-                itemTm.setQtyOnHand(resultSet.getInt(4));
-                itemTm.setButton(new Button("Delete"));
+                btn.setOnAction(actionEvent -> {
+                    deleteItem(itemTm.getCode());
+                });
+
                 tmList.add(itemTm);
             }
-
-            statement.close();
             tblItems.setItems(tmList);
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -215,6 +221,30 @@ public class ItemsDashboardController implements Initializable {
 
     public void reloadItemTable() {
         loadItemTable();
+    }
+
+    public void deleteItem(String id) {
+        try {
+            boolean isDeleted = itemModel.deleteItem(id);
+            if (isDeleted) {
+                new Alert(Alert.AlertType.INFORMATION, "Item Deleted!").show();
+                loadItemTable();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Something went wrong!").show();
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setData(ItemTm newValue) {
+        if (newValue != null) {
+            txtCode.setEditable(false);
+            txtCode.setText(newValue.getCode());
+            txtDescription.setText(newValue.getDescription());
+            txtUnitPrice.setText(String.valueOf(newValue.getUnitPrice()));
+            txtQtyOnHand.setText(String.valueOf(newValue.getQtyOnHand()));
+        }
     }
 
 }
