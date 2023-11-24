@@ -31,6 +31,8 @@ import java.net.URL;
 import java.sql.*;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ItemsDashboardController implements Initializable {
 
@@ -175,6 +177,9 @@ public class ItemsDashboardController implements Initializable {
     }
 
     public void updateItem() {
+        if (isAnyInputDataInvalid()) {
+            return;
+        }
         try {
             boolean isUpdated = itemModel.updateItem(new ItemDTO(txtCode.getText(),
                     txtDescription.getText(),
@@ -192,6 +197,9 @@ public class ItemsDashboardController implements Initializable {
     }
 
     public void saveItem() {
+        if (isAnyInputDataInvalid()) {
+            return;
+        }
         try {
             boolean isSaved = itemModel.createItem(new ItemDTO(txtCode.getText(),
                     txtDescription.getText(),
@@ -247,4 +255,58 @@ public class ItemsDashboardController implements Initializable {
         }
     }
 
+    private boolean validateQtyOnHand() {
+        Pattern pattern = Pattern.compile("^[0-9]+$");
+        Matcher matcher = pattern.matcher(txtQtyOnHand.getText());
+
+        if (
+                matcher.find()
+                && matcher.group().equals(txtQtyOnHand.getText())
+                && Integer.parseInt(txtQtyOnHand.getText()) >= 0
+        ) {
+            return true;
+        }
+
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid Quantity On Hand");
+        alert.setHeaderText(null);
+        alert.setContentText("Please enter a valid number for quantity on hand");
+        alert.showAndWait();
+        return false;
+    }
+
+    private boolean validateUnitPrice() {
+        double unitPrice;
+        try {
+            unitPrice = Double.parseDouble(txtUnitPrice.getText());
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Invalid Unit Price");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid unit price");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateCode() {
+        Pattern pattern = Pattern.compile("^P[0-9]{3}$");
+        Matcher matcher = pattern.matcher(txtCode.getText());
+
+        if (matcher.find() && matcher.group().equals(txtCode.getText())) {
+            return true;
+        }
+
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid Code");
+        alert.setHeaderText(null);
+        alert.setContentText("Please enter a valid code");
+        alert.showAndWait();
+        return false;
+    }
+
+    private boolean isAnyInputDataInvalid() {
+        return !validateCode() | !validateUnitPrice() | !validateQtyOnHand();
+    }
 }
