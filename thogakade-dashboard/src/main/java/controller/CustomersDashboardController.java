@@ -99,24 +99,25 @@ public class CustomersDashboardController implements Initializable {
     private void loadCustomerTable() {
         ObservableList<CustomerTm> tmList = FXCollections.observableArrayList();
         try {
-            List<CustomerDTO> customerDTOS = customerModel.getAllCustomers();
-            for (CustomerDTO customerDTO : customerDTOS) {
-                CustomerTm customerTm = new CustomerTm();
-                customerTm.setId(customerDTO.getId());
-                customerTm.setName(customerDTO.getName());
-                customerTm.setAddress(customerDTO.getAddress());
-                customerTm.setSalary(customerDTO.getSalary());
-
+            List<CustomerDTO> dtoList  = customerModel.getAllCustomers();
+            for (CustomerDTO customerDTO : dtoList) {
                 Button btn = new Button("Delete");
+                CustomerTm customerTm = new CustomerTm(
+                        customerDTO.getId(),
+                        customerDTO.getName(),
+                        customerDTO.getAddress(),
+                        customerDTO.getSalary(),
+                        btn
+                );
+
                 btn.setOnAction(actionEvent -> {
                     deleteCustomer(customerTm.getId());
                 });
-                customerTm.setButton(btn);
 
                 tmList.add(customerTm);
             }
             tblCustomers.setItems(tmList);
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
