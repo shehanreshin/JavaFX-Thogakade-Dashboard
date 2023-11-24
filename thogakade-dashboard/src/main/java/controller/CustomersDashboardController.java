@@ -27,6 +27,8 @@ import java.net.URL;
 import java.sql.*;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CustomersDashboardController implements Initializable {
 
@@ -175,6 +177,9 @@ public class CustomersDashboardController implements Initializable {
     }
 
     public void updateCustomer() {
+        if (isAnyInputDataInvalid()) {
+            return;
+        }
         try {
             boolean isUpdated = customerModel.updateCustomer(new CustomerDTO(txtId.getText(),
                     txtName.getText(),
@@ -201,6 +206,9 @@ public class CustomersDashboardController implements Initializable {
     }
 
     public void saveCustomer() {
+        if (isAnyInputDataInvalid()) {
+            return;
+        }
         try {
             boolean isSaved = customerModel.createCustomer(new CustomerDTO(txtId.getText(),
                     txtName.getText(),
@@ -241,6 +249,41 @@ public class CustomersDashboardController implements Initializable {
             txtAddress.setText(newValue.getAddress());
             txtSalary.setText(String.valueOf(newValue.getSalary()));
         }
+    }
+
+    private boolean validateSalary() {
+        double salary;
+        try {
+            salary = Double.parseDouble(txtSalary.getText());
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Invalid Salary");
+            alert.setHeaderText(null);
+            alert.setContentText("Please enter a valid salary");
+            alert.showAndWait();
+            return false;
+        }
+        return true;
+    }
+
+    private boolean validateId() {
+        Pattern pattern = Pattern.compile("^C[0-9]{3}$");
+        Matcher matcher = pattern.matcher(txtId.getText());
+
+        if (matcher.find() && matcher.group().equals(txtId.getText())) {
+            return true;
+        }
+
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Invalid ID");
+        alert.setHeaderText(null);
+        alert.setContentText("Please enter a valid ID");
+        alert.showAndWait();
+        return false;
+    }
+
+    private boolean isAnyInputDataInvalid() {
+        return !validateId() | !validateSalary();
     }
 }
 
